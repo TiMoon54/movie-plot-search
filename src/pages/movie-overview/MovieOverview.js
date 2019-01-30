@@ -27,9 +27,11 @@ const MovieOverview = ({
         ariaLabel={'Movie list navigation'}
       />
     </div>
-    <div className={'col-md-4'}>
-      {selectedMovie && <MovieCard {...selectedMovie} />}
-    </div>
+    {selectedMovie && (
+      <div className={'col-md-4'}>
+        <MovieCard {...selectedMovie} />
+      </div>
+    )}
   </Fragment>
 );
 
