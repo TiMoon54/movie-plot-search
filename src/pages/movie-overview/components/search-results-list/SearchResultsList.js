@@ -11,6 +11,7 @@ const SearchResultsList = ({ listData, itemProps }) => (
       ItemTemplate={SingleSearchResult}
       data={listData}
       itemProps={itemProps}
+      itemClassName={'search-results-list__item'}
     />
   </div>
 );

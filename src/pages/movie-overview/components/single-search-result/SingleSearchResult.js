@@ -1,9 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './single-search-result.css';
+import favoriteStateHOC from './favoriteStateHOC';
 
 const SingleSearchResult = ({ Title, imdbID, onItemClick }) => (
-  <span className={'single-search-result'} onClick={() => onItemClick(imdbID)}>{Title}</span>
+  <span className={'single-search-result'} onClick={() => onItemClick(imdbID)}>
+    {Title}
+  </span>
 );
 
 SingleSearchResult.propTypes = {
@@ -12,4 +15,4 @@ SingleSearchResult.propTypes = {
   onItemClick: propTypes.func
 };
 
-export default SingleSearchResult;
+export default favoriteStateHOC(SingleSearchResult);
