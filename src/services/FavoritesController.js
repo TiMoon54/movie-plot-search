@@ -5,7 +5,7 @@ class FavoritesController {
   constructor() {
     if (!FavoritesController.instance) {
       const storageItem = localStorage.getItem(storageKey);
-      this._storage = storageItem === null ? [] : storageItem.split(separator);
+      this.storage = storageItem ? storageItem.split(separator) : [];
 
       FavoritesController.instance = this;
     }
@@ -13,24 +13,25 @@ class FavoritesController {
     return FavoritesController.instance;
   }
 
-  add(imdbID) {
-    if (!this._storage.includes(imdbID)) {
-      this._storage.push(imdbID);
-      localStorage.setItem(storageKey, this._storage.join(separator));
-    }
-  }
-
-  remove(imdbID) {
-    this._storage = this._storage.filter(el => el !== imdbID);
-    localStorage.setItem(storageKey, this._storage.join(separator));
-  }
-
-  get() {
+  get storage() {
     return this._storage;
   }
 
+  set storage(value) {
+    this._storage = value;
+    localStorage.setItem(storageKey, value.join(separator));
+  }
+
+  toggle(imdbID) {
+    if (this.isFavorite(imdbID)) {
+      this.storage = this.storage.filter(el => el !== imdbID);
+    } else {
+      this.storage = [...this.storage, imdbID];
+    }
+  }
+
   isFavorite(imdbID) {
-    return this._storage.includes(imdbID);
+    return this.storage.includes(imdbID);
   }
 }
 
