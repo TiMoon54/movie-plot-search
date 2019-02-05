@@ -14,20 +14,20 @@ class Container extends Component {
 
   static displayName = 'MovieSearch';
 
-  handleSearch() {
+  handleSearch = () => {
     this.props.onSearch(this.state.value);
-  }
+  };
 
-  handleChange(value) {
+  handleChange = value => {
     this.setState({ value });
-  }
+  };
 
   render() {
     return (
       <div className={'movie-search'}>
         <Search
-          onSearch={this.handleSearch.bind(this)}
-          onChange={this.handleChange.bind(this)}
+          onSearch={this.handleSearch}
+          onChange={this.handleChange}
           value={this.state.value}
         />
       </div>

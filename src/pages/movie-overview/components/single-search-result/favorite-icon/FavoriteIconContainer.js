@@ -36,26 +36,26 @@ class Container extends Component {
     }
   }
 
-  handleAddToFavorites() {
+  handleAddToFavorites = () => {
     this.props.favoritesController.add(this.props.imdbID);
     this.setState({
       isFavorite: this.props.favoritesController.isFavorite(this.props.imdbID)
     });
-  }
+  };
 
-  handleRemoveFromFavorites() {
+  handleRemoveFromFavorites = () => {
     this.props.favoritesController.remove(this.props.imdbID);
     this.setState({
       isFavorite: this.props.favoritesController.isFavorite(this.props.imdbID)
     });
-  }
+  };
 
   render() {
     return (
       <FavoriteIcon
         isFavorite={this.state.isFavorite}
-        onAddToFavorites={this.handleAddToFavorites.bind(this)}
-        onRemoveFromFavorites={this.handleRemoveFromFavorites.bind(this)}
+        onAddToFavorites={this.handleAddToFavorites}
+        onRemoveFromFavorites={this.handleRemoveFromFavorites}
       />
     );
   }

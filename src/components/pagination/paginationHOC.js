@@ -37,9 +37,7 @@ const paginationHOC = WrappedComponent => {
       }
     }
 
-    handleChange(page) {
-      this.props.onPageChange(page);
-    }
+    handleChange = page => this.props.onPageChange(page);
 
     render() {
       const { totalPages, maxPagesCount } = this.state;
@@ -53,7 +51,7 @@ const paginationHOC = WrappedComponent => {
             maxPagesCount={maxPagesCount}
             currentPage={currentPage}
             ariaLabel={ariaLabel}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           />
         </Fragment>
       );
