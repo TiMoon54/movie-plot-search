@@ -11,6 +11,14 @@ const favoritesHOC = WrappedComponent => {
       this.state.isFavorite = FavoritesController.isFavorite(this.props.imdbID);
     }
 
+    componentDidUpdate(prevProps) {
+      if (prevProps.imdbID !== this.props.imdbID) {
+        this.setState({
+          isFavorite: FavoritesController.isFavorite(this.props.imdbID)
+        });
+      }
+    }
+
     handleToggleFavorite = () => {
       FavoritesController.toggle(this.props.imdbID);
       this.setState({
