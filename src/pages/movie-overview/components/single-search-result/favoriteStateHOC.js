@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import FavoriteIconContainer from './favorite-icon/FavoriteIconContainer';
+import FavoriteIcon from './favorite-icon/FavoriteIcon';
 
 const favoriteStateHOC = WrappedComponent => {
   class FavoriteStateHOC extends Component {
@@ -7,7 +7,7 @@ const favoriteStateHOC = WrappedComponent => {
       return (
         <Fragment>
           <WrappedComponent {...this.props} />
-          <FavoriteIconContainer imdbID={this.props.imdbID} />
+          <FavoriteIcon imdbID={this.props.imdbID} />
         </Fragment>
       );
     }

@@ -8,11 +8,24 @@ const favoritesHOC = WrappedComponent => {
     constructor(props) {
       super(props);
 
-      this.state.favoritesController = FavoritesController;
+      this.state.isFavorite = FavoritesController.isFavorite(this.props.imdbID);
     }
 
+    handleToggleFavorite = () => {
+      FavoritesController.toggle(this.props.imdbID);
+      this.setState({
+        isFavorite: FavoritesController.isFavorite(this.props.imdbID)
+      });
+    };
+
     render() {
-      return <WrappedComponent {...this.props} {...this.state} />;
+      return (
+        <WrappedComponent
+          {...this.props}
+          isFavorite={this.state.isFavorite}
+          onToggleFavorite={this.handleToggleFavorite}
+        />
+      );
     }
   }
 
