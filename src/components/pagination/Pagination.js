@@ -15,7 +15,7 @@ const Pagination = ({
 
         return (
           <Fragment key={id}>
-            {exactPage > 0 && exactPage < totalPages && (
+            {exactPage > 0 && exactPage <= totalPages && (
               <li
                 className={
                   'page-item' + (currentPage === exactPage ? ' active' : '')
