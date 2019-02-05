@@ -53,7 +53,7 @@ class Container extends Component {
       });
   }
 
-  handleSearch(value) {
+  handleSearch = value => {
     this.setState(
       {
         searchString: value,
@@ -61,13 +61,13 @@ class Container extends Component {
       },
       () => this.fetchData()
     );
-  }
+  };
 
-  handlePageChange(pageNum) {
+  handlePageChange = pageNum => {
     this.setState({ currentPage: pageNum }, () => this.fetchData());
-  }
+  };
 
-  handleItemClick(OMDbId) {
+  handleItemClick = OMDbId => {
     this.props.OMDbClient.getMovieInfo(OMDbId)
       .then(res => {
         const { data } = res;
@@ -85,7 +85,7 @@ class Container extends Component {
         // TODO Show if something went completely wrong
         console.log(error);
       });
-  }
+  };
 
   render() {
     const {
@@ -98,14 +98,14 @@ class Container extends Component {
 
     return (
       <MovieOverview
-        onSearch={this.handleSearch.bind(this)}
-        onItemClick={this.handleItemClick.bind(this)}
+        onSearch={this.handleSearch}
+        onItemClick={this.handleItemClick}
         searchResults={items}
         selectedMovie={selectedMovie}
         totalResults={+totalResults}
         resultsByPage={resultsByPage}
         currentPage={+currentPage}
-        onPageChange={this.handlePageChange.bind(this)}
+        onPageChange={this.handlePageChange}
       />
     );
   }
