@@ -37,4 +37,6 @@ class FavoritesController {
 
 const instance = new FavoritesController();
 
+Object.seal(instance);
+
 export default instance;
