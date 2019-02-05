@@ -39,7 +39,7 @@ class Container extends Component {
         if (data.Response === 'True') {
           const { Search, totalResults } = data;
 
-          this.setState({ items: Search, totalResults });
+          this.setState({ items: Search, totalResults: +totalResults });
         } else {
           if (data.Error) {
             // TODO Show if something went wrong
@@ -102,9 +102,9 @@ class Container extends Component {
         onItemClick={this.handleItemClick}
         searchResults={items}
         selectedMovie={selectedMovie}
-        totalResults={+totalResults}
+        totalResults={totalResults}
         resultsByPage={resultsByPage}
-        currentPage={+currentPage}
+        currentPage={currentPage}
         onPageChange={this.handlePageChange}
       />
     );
